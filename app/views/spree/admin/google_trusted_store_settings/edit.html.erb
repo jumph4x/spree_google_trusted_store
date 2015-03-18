@@ -2,9 +2,11 @@
   Google Trusted Store Settings
 <% end %>
 
-<div class='row'>
-  <%= link_to 'Back', spree.admin_general_settings_path, class: 'button' %>
-</div>
+
+<% content_for :page_actions do %>
+  <%= button_link_to Spree.t("back"), spree.admin_general_settings_path, icon: 'arrow-left' %>
+<% end %>
+
 
 <div class='row'>
   <h2>Google Trusted Store shipment feed path: </h2>
@@ -18,11 +20,18 @@
 
 <%= form_for @google_trusted_store_setting, url: spree.admin_google_trusted_store_setting_path(@google_trusted_store_setting) do |f| %>
   <div class='form-group'>
-    <div class='form-group'>
+    <div class="field">
+      <%= f.label :account_id, "Account ID" %><br />
       <%= f.text_field :account_id %>
     </div>
-    <div class='form-group'>
+    <div class='field'>
+      <%= f.label :default_locale, "Default Locale" %><br />
       <%= f.text_field :default_locale %>
     </div>
+  </div>
+  <div class="form-group">
+    <%= button Spree.t('actions.update'), 'refresh' %>
+    <span class="or"><%= Spree.t(:or) %></span>
+    <%= link_to_with_icon 'remove', Spree.t('actions.cancel'), spree.admin_general_settings_path, :class => 'button' %>
   </div>
 <% end %>
