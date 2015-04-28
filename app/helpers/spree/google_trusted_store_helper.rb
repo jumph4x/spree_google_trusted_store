@@ -45,7 +45,7 @@ module Spree
     private
 
     def negative_adjustments_on(order)
-      value = order.all_adjustments.included.map(&:amount).reduce(0, :+)
+      value = order.all_adjustments.is_included.map(&:amount).reduce(0, :+)
       value <= 0 ? value : 0
     end
 
