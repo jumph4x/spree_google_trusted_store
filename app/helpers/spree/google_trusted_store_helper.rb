@@ -29,6 +29,7 @@ module Spree
         shipping_total: order.shipment_total,
         tax_total:      order.included_tax_total,
         est_ship_date:  2.business_days.from_now.strftime('%F'),
+        est_delivery_date: "ORDER_EST_DELIVERY_DATE",
         has_preorder:   order.backordered? ? 'Y' : 'N',
         has_digital:    digital_in?(order) ? 'Y' : 'N',
 
